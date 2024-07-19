@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5 p-5">
+                <form (ngSubmit)="onSubmit()">
+                    <div *ngIf="userMsg && showCustomError" class="alert alert-success" role="alert">
+                        {{userMsg}}
+                    </div>
+                    <div *ngIf="userMsg && !showCustomError" class="alert alert-danger" role="alert">
+                        {{userMsg}}
+                    </div>
+                    <h4>Please enter your flight details</h4>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Airline *</label>
+                        <input type="text" #airlineInput name="airline"
+                            class="form-control required form-control-lg bg-light fs-6" [(ngModel)]="airline"
+                            placeholder="United" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Arrival Date *</label>
+                        <input type="text" #arrDate name="arrivalDate"
+                            class="form-control form-control-lg bg-light fs-6" [(ngModel)]="arrivalDate"
+                            placeholder="18/7/24" required />
+                        <p *ngIf="inValidDate" [ngStyle]="{color:'red'}">Invalid date format</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Arrival Time *</label>
+                        <input type="text" #arrTime name="arrivalTime"
+                            class="form-control form-control-lg bg-light fs-6" [(ngModel)]="arrivalTime"
+                            placeholder="11.00am" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Flight Number *</label>
+                        <input type="text" #fNumber name="flightNumber"
+                            class="form-control form-control-lg bg-light fs-6" [(ngModel)]="flightNumber"
+                            placeholder="UA3079" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Number Of Guests *</label>
+                        <input type="number" #numGuests name="numOfGuests" min="1"
+                            class="form-control form-control-lg bg-light fs-6" [(ngModel)]="numOfGuests" placeholder="1"
+                            required />
+                        <p *ngIf="inValidNumGuests" [ngStyle]="{color:'red'}">Minimum number of guests shoild be 1</p>
+
+                    </div>
+                    <div class="mb-5">
+                        <label for="exampleInputPassword1" class="form-label">Comments</label>
+                        <input type="textarea" name="comments" class="form-control form-control-lg bg-light fs-6"
+                            [(ngModel)]="comments" placeholder="Comments" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
